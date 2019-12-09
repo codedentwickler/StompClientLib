@@ -219,6 +219,10 @@ public class StompClientLib: NSObject, SRWebSocketDelegate {
         print("didReceivePong")
     }
     
+    public func pingServer() {
+        sendFrame(command: StompCommands.commandPing, header: nil, body: nil)
+    }
+    
     private func sendFrame(command: String?, header: [String: String]?, body: AnyObject?) {
         if socket?.readyState == .OPEN {
             var frameString = ""
